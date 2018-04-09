@@ -93,3 +93,43 @@ for letter in 'Python':
    print ('当前字母 :', letter)
 
 print ("Good bye!")
+
+res=0
+for i in range(1,2,10):
+    res+=i
+print(res)
+
+
+source =['aaaaaa','bbbbbb','cccccc','ddddd','cccccc']
+print('有趣的推导式1')
+print([i for i in source])#列表推导式
+print((i for i in source))#生成器推导式 可以少一组括号 没区别
+print({i for i in source})#集合推导式
+print({i:i for i in source})#字典推导式
+
+#没有tuple推导式 但你可以通过下面的方式
+print(tuple(i for i in source))#利用生成器推导式 转换成元组 
+
+
+print('没什么特别的纯粹做试验')
+print([(i for i in source)])
+print({(i for i in source)})
+print([[i for i in source]])
+# print({[i for i in source]})  TypeError: unhashable type: 'list'
+
+
+# print(i) for i in source 外面不加[] 语法错误 SyntaxError: invalid syntax
+print('在最外面加[]')
+[print(i) for i in source] #这个很有趣 在另一篇文章里面使用了这个
+#这里的print 可以是任何的函数 效果是类似的
+
+print('试试最外面 用（）或者{}')
+(print(i) for i in source)#输出空 
+{print(i) for i in source}#这个和中括号效果一样！！
+
+
+print('那如果i周围没有括号呢？？')
+#没有括号之后 print里面就是一个迭代器 外面加括号 没什么作用 大概相当于数学里面（1+2）=[1+2]={1+2} =1+2 
+[print(i for i in source)]
+(print(i for i in source))
+{print(i for i in source)}
